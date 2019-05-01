@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import FullSheet from './FullSheet';
-import AddSheet from './AddSheet';
+import AddSheet from './AddSheet'; 
+import Transition from './Transition';
 
 class App extends Component {
   constructor() {
     super();
     this.state = ({
       appWidth: null,
+      drawerOpened: false,
       sheets: []
     });
   }
@@ -33,15 +35,23 @@ class App extends Component {
       sheets: [...this.state.sheets, newSheet]
     });
   }
+  toggleDrawer = () =>{
+    this.setState({
+      drawerOpened: !this.state.drawerOpened
+    });
+  }
   render() {
-    let { sheets, appWidth } = this.state;
+    let { sheets, appWidth, drawerOpened } = this.state;
     return (
       <span>
-        <header className="App-header">
+        <header className="App-header" onClick={this.toggleDrawer}>
           Add sheet
-          <AddSheet addSheet={this.addSheet} />
         </header>
-      
+        
+        <Transition showIt={drawerOpened} thisClass="fade">
+          <AddSheet addSheet={this.addSheet} toggleDrawer={this.toggleDrawer}/> 
+        </Transition>
+
         <div className="App" ref="app"> 
           {
             sheets.map((sheet, index) =>
@@ -59,7 +69,7 @@ class App extends Component {
                 key={index}
               />
             )
-          }
+          } 
         </div>
       </span>
     );

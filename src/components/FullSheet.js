@@ -13,13 +13,15 @@ const FullSheet = (props) => {
 
     let margin = (props.margin / sheetWidth) * props.appWidth;
 
-    const getCount = () =>{
-        let across = Math.floor(props.width/props.partWidth);
-        let down = Math.floor(props.height/props.partHeight);
+    const getCount = () => {
+        let across = Math.floor(props.width / (parseFloat(props.partWidth) + parseFloat(props.margin)));
+        let down = Math.floor(props.height / (parseFloat(props.partHeight) + parseFloat(props.margin)));
         return across * down;
     }
-     
-    let countParts = props.count === "fill" ? getCount() : props.count; 
+
+    let maxCount = getCount();
+
+    let countParts = props.count === "fill" ? maxCount : parseInt(props.count);
     let count = [...Array(countParts)];
 
     const sheetStyles = {
@@ -31,31 +33,30 @@ const FullSheet = (props) => {
         marginBottom: "20px",
         padding: "0",
         backgroundColor: "#fff",
-        display: "flex",
-        flexWrap: "wrap",
         justifyContent: "flex-start",
         alignItems: "flex-start"
     }
     return (
         <div>
-            <p> Sheet size: {sheetHeight}" x {sheetWidth}" </p>
+            <p> Sheet size: {sheetHeight}" x {sheetWidth}" - {maxCount} fits on sheet</p>
             <div style={sheetStyles}>
-                { 
-                    count.map((s, i) => 
-                        <Part 
-                            width={partWidth} 
-                            height={partHeight} 
-                            key={i} 
+                {
+                    count.map((s, i) =>
+                        <Part
+                            width={partWidth}
+                            height={partHeight}
+                            key={i}
                             margin={margin}
-                            shape={shape} 
-                            number={i+1}
+                            shape={shape}
+                            number={i + 1}
+                            error={i >= maxCount}
                         />
-                    ) 
+                    )
                 }
             </div>
-            <button onClick={ () => props.deleteSheet(props.index) }>Delete {props.index}</button>
+            <button onClick={() => props.deleteSheet(props.index)}>Delete</button>
         </div>
-    );  
+    );
 }
 
 export default FullSheet;

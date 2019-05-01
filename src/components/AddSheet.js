@@ -5,20 +5,26 @@ const AddSheet = (props) => {
 
     const [sheet, updateSheet] = useState(
         {
-          width: 48,
+          width: 96,
           height: 48,
-          margin: 0,
+          margin: .5,
           partWidth: 2,
           partHeight: 2,
           shape: "circle",
           count: "fill"
-        });
+        }); 
 
     const handleChange = (event) =>{ 
         updateSheet({...sheet, [event.target.id]: event.target.value});
     }  
     return(
-        <div className='form-container'>
+        <div className='form-container' style={{display: "flex"}}>
+            <div style={{width: "100%", display: "flex", border: "1px solid red"}}>
+                <h1 style={{width: "80%", border: "1px solid red"}}> Sheet properties </h1>
+                <div style={{width: "20%", border: "1px solid red"}}>
+                    <button onClick={props.toggleDrawer} style={{width: "100%"}}>Close</button>
+                </div> 
+            </div>
             <div>
                 <label htmlFor='width'>Width</label>
                 <input type='text' name='width' id='width' value={sheet.width} onChange={handleChange} />
@@ -26,11 +32,7 @@ const AddSheet = (props) => {
             <div>
                 <label htmlFor='width'>Height</label>
                 <input type='text' name='height' id='height' value={sheet.height} onChange={handleChange} />
-            </div>
-            <div>
-                <label htmlFor='width'>Margin</label>
-                <input type='text' name='margin' id='margin' value={sheet.margin} onChange={handleChange} />
-            </div>
+            </div> 
             <div>
                 <label htmlFor='width'>Part width</label>
                 <input type='text' name='partWidth' id='partWidth' value={sheet.partWidth} onChange={handleChange} />
@@ -40,8 +42,15 @@ const AddSheet = (props) => {
                 <input type='text' name='partHeight' id='partHeight' value={sheet.partHeight} onChange={handleChange} />
             </div>
             <div>
-                <label htmlFor='width'>Shape</label>
-                <input type='text' name='shape' id='shape' value={sheet.shape} onChange={handleChange} />
+                <label htmlFor='width'>Margin</label>
+                <input type='text' name='margin' id='margin' value={sheet.margin} onChange={handleChange} />
+            </div>
+            <div>
+                <label htmlFor='width'>Shape</label> 
+                <select type='text' name='shape' id='shape' value={sheet.shape} onChange={handleChange} >
+                    <option value="square">Square / Rectangle</option>
+                    <option value="circle">Circle</option>
+                </select>
             </div>
             <div>
                 <label htmlFor='width'>Count</label>

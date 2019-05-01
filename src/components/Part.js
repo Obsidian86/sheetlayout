@@ -9,7 +9,10 @@ const Part = (props) => {
         textAlign: "center",
         borderRadius: props.shape === "circle" ? "50%" : "none",
         marginLeft: props.margin + "px",
-        marginTop: props.margin + "px"
+        marginTop: props.margin + "px",
+        fontSize: ".9em",
+        backgroundColor: props.error ? "red": "#c2c2c2",
+        float: "left"
     }
 
     return(<div style={styles}>{props.number}</div>);
