@@ -19,25 +19,34 @@ const AddSheet = (props) => {
     }  
     return(
         <div className='form-container' style={{display: "flex"}}>
-            <div style={{width: "100%", display: "flex", border: "1px solid red"}}>
-                <h1 style={{width: "80%", border: "1px solid red"}}> Sheet properties </h1>
-                <div style={{width: "20%", border: "1px solid red"}}>
-                    <button onClick={props.toggleDrawer} style={{width: "100%"}}>Close</button>
+            <div style={{width: "120%", margin: "0", padding:"0", display: "flex", justifyContent: "space-between", height: "50px", marginTop: "15px"}}>
+                <h1 style={{width: "99%", margin: "0", paddingTop: "8px"}}> Sheet properties </h1>
+                <div style={{width: "1%", alignContent:"center" }}>
+                    <button onClick={props.toggleDrawer} style={{  
+                        width: "auto",
+                        margin: "10px 0 0 0",
+                        border: "2px solid red",
+                        background: "none",
+                        borderRadius: "50%",
+                        fontWeight: "bold",
+                        color: "red",
+                        padding: "3px 6px"
+                    }} aria-label="test">X</button>
                 </div> 
             </div>
-            <div>
+            <div style={{width: "45%"}}>
                 <label htmlFor='width'>Width</label>
                 <input type='text' name='width' id='width' value={sheet.width} onChange={handleChange} />
             </div>
-            <div>
+            <div style={{width: "45%"}}>
                 <label htmlFor='width'>Height</label>
                 <input type='text' name='height' id='height' value={sheet.height} onChange={handleChange} />
             </div> 
-            <div>
+            <div style={{width: "45%"}}>
                 <label htmlFor='width'>Part width</label>
                 <input type='text' name='partWidth' id='partWidth' value={sheet.partWidth} onChange={handleChange} />
             </div>
-            <div>
+            <div style={{width: "45%"}}>
                 <label htmlFor='width'>Part height</label>
                 <input type='text' name='partHeight' id='partHeight' value={sheet.partHeight} onChange={handleChange} />
             </div>
@@ -56,8 +65,8 @@ const AddSheet = (props) => {
                 <label htmlFor='width'>Count</label>
                 <input type='text' name='count' id='count' value={sheet.count} onChange={handleChange} />
             </div>
-            <div>
-                <button onClick={() => props.addSheet(sheet)}>Add Sheet</button>
+            <div style={{width: "100%", textAlign: "center"}}>
+                <button aria-label="Add new sheet" onClick={() => props.addSheet(sheet)}>Add Sheet</button>
             </div>
             
         </div>

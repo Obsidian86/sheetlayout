@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Part = (props) => {
+const Part = (props) => { 
     const styles = {
         width: props.width + "px",
         height: props.height + "px",
@@ -10,6 +10,7 @@ const Part = (props) => {
         borderRadius: props.shape === "circle" ? "50%" : "none",
         marginLeft: props.margin + "px",
         marginTop: props.margin + "px",
+        marginRight: props.endRow ? props.margin + "px" : 0,
         fontSize: ".9em",
         backgroundColor: props.error ? "red": "#c2c2c2",
         float: "left"

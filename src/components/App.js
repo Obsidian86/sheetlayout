@@ -8,7 +8,7 @@ class App extends Component {
     super();
     this.state = ({
       appWidth: null,
-      drawerOpened: false,
+      drawerOpened: true,
       sheets: []
     });
   }
@@ -32,7 +32,8 @@ class App extends Component {
   }
   addSheet = (newSheet) =>{  
     this.setState({
-      sheets: [...this.state.sheets, newSheet]
+      sheets: [...this.state.sheets, newSheet],
+      drawerOpened: false
     });
   }
   toggleDrawer = () =>{
@@ -54,7 +55,7 @@ class App extends Component {
 
         <div className="App" ref="app"> 
           {
-            sheets.map((sheet, index) =>
+            sheets.map((sheet, index) => 
               <FullSheet
                 appWidth={appWidth}
                 width={sheet.width}
@@ -65,9 +66,8 @@ class App extends Component {
                 count={sheet.count}
                 margin={sheet.margin}
                 index={index}
-                deleteSheet={this.deleteSheet}
-                key={index}
-              />
+                deleteSheet={this.deleteSheet} 
+              /> 
             )
           } 
         </div>
