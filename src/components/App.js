@@ -8,8 +8,44 @@ class App extends Component {
     super();
     this.state = ({
       appWidth: null,
-      drawerOpened: true,
-      sheets: []
+      drawerOpened: false,
+      sheets: [
+        {count: "fill",
+        height: 48,
+        margin: 0.5,
+        partHeight: 15,
+        partWidth: 15,
+        shape: "circle",
+        width: 96},
+        {count: "fill",
+        height: 48,
+        margin: 0.5,
+        partHeight: 12,
+        partWidth: 12,
+        shape: "circle",
+        width: 96},
+        {count: "fill",
+        height: 48,
+        margin: 0.5,
+        partHeight: 10,
+        partWidth: 10,
+        shape: "circle",
+        width: 96},
+        {count: "fill",
+        height: 48,
+        margin: 0.5,
+        partHeight: 5,
+        partWidth: 5,
+        shape: "circle",
+        width: 96},
+        {count: "fill",
+        height: 48,
+        margin: 0.5,
+        partHeight: 3,
+        partWidth: 3,
+        shape: "circle",
+        width: 96},
+      ]
     });
   }
 
@@ -25,16 +61,16 @@ class App extends Component {
       this.setWidth();
     });
   }
-  deleteSheet = (sheet) => {
+  deleteSheet = (sheet) => {  
     this.setState({
-      sheets: this.state.sheets.length > 1 ? this.state.sheets.splice(sheet -1, 1) : []
+      sheets: this.state.sheets.length > 1 ? this.state.sheets.filter((s, index) => sheet !== index ) : []
     });
   }
   addSheet = (newSheet) =>{  
     this.setState({
       sheets: [...this.state.sheets, newSheet],
       drawerOpened: false
-    });
+    }); 
   }
   toggleDrawer = () =>{
     this.setState({
@@ -67,6 +103,7 @@ class App extends Component {
                 margin={sheet.margin}
                 index={index}
                 deleteSheet={this.deleteSheet} 
+                key={index}
               /> 
             )
           } 

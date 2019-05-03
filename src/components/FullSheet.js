@@ -36,7 +36,7 @@ const FullSheet = (props) => {
     
     return (
         <div style={{marginBottom: "30px", marginTop: "24px"}}>
-            <p style={{ fontWeight: "bold", marginBottom: "10px", color: "white", backgroundColor: "#333", borderRadius: "5px", padding: "6px", display:"inline-block"}}> Sheet size: {sheetHeight}" x {sheetWidth}" - {maxCount} fits on sheet | {across} across and {down} down</p>
+            <p style={{ fontWeight: "bold", marginBottom: "10px", color: "white", backgroundColor: "#333", borderRadius: "5px", padding: "6px", display:"inline-block"}}> Sheet size: {sheetHeight}" x {sheetWidth}" -{maxCount} total ({props.partWidth}" x {props.partHeight}") fit on sheet | {across} across and {down} down</p>
             <div style={sheetStyles}>
                 {
                     count.map((s, i) =>
@@ -59,7 +59,10 @@ const FullSheet = (props) => {
                 color: "white",
                 backgroundColor: "red",
                 borderRadius: "5px",
-                padding: "10px 14px"
+                padding: "10px 14px",
+                clear: "both",
+                display: "block",
+                marginTop: "20px"
             }} onClick={() => props.deleteSheet(props.index)}>Delete</button>
         </div>
     );

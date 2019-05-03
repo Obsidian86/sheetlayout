@@ -8,8 +8,8 @@ const AddSheet = (props) => {
           width: 96,
           height: 48,
           margin: .5,
-          partWidth: 2,
-          partHeight: 2,
+          partWidth: 15,
+          partHeight: 15,
           shape: "circle",
           count: "fill"
         }); 
